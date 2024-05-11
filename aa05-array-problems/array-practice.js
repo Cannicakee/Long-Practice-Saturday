@@ -5,6 +5,7 @@ const findMinimum = arr => {
 
 };
 
+// O(n)
 const runningSum = arr => {
   if (arr.length === 0) return [];
   let newArr = [arr[0]]
@@ -16,20 +17,38 @@ const runningSum = arr => {
   return newArr;
 };
 
+// O(n)
 const evenNumOfChars = arr => {
-
-  // Your code here 
+  let count = 0
+  for (let i = 0; i < arr.length; i++) {
+    const word = arr[i];
+    if (word.length % 2 === 0) {
+      count++
+    }
+  } return count
 };
 
+// O(n2)
 const smallerThanCurr = arr => {
-
-  // Your code here 
-
+  let result = []
+  for (let i = 0; i < arr.length; i++) {
+    let count = 0
+    const el = arr[i];
+    for (let j = 0; j < arr.length; j++) {
+      if (arr[j] < el) {
+        count++
+      }
+    }
+    result.push(count)
+  } return result
 };
 
+// O(n)
 const twoSum = (arr, target) => {
-
-  // Your code here 
+  for (let num of arr) {
+    let newNum = target - num
+    if (arr.includes(newNum)) return true
+  } return false
 };
 
 const secondLargest = arr => {
