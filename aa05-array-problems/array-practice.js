@@ -28,7 +28,7 @@ const evenNumOfChars = arr => {
   } return count
 };
 
-// O(n2)
+// O(n ^ 2)
 const smallerThanCurr = arr => {
   let result = []
   for (let i = 0; i < arr.length; i++) {
@@ -50,16 +50,35 @@ const twoSum = (arr, target) => {
     if (arr.includes(newNum)) return true
   } return false
 };
-
+// O(n)
 const secondLargest = arr => {
-
-  // Your code here 
+  if (arr.length < 2) return undefined;
+  let max = Math.max(...arr)
+  arr.splice(arr.indexOf(max), 1)
+  return Math.max(...arr)
 };
 
+// const shuffle = (arr) => {
+//   let newArr = [];
+//   for (let i = 0; i < arr.length; i++) {
+//     let random = Math.floor(Math.random() * (arr.length - 1))
+//     if (!newArr.includes(arr[random])) {
+//       newArr.push(arr[random])
+//     } else {
+//       i--
+//     }
+//   }
+//   return newArr;
+// };
+// O(n)
 const shuffle = (arr) => {
-
-  // Your code here 
-};
+  let newArr = arr.slice()
+  for (let i = newArr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [newArr[i], newArr[j]] = [newArr[j], newArr[i]]
+  }
+  return newArr;
+}
 
 
 module.exports = [findMinimum, runningSum, evenNumOfChars, smallerThanCurr, twoSum, secondLargest, shuffle];
